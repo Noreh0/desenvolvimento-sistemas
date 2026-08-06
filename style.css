@@ -1,0 +1,581 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* --- DESIGN SYSTEM & VARIÁVEIS NEUMÓRFICAS --- */
+:root {
+    /* Cores principais */
+    --bg-primary: #ecf0f3;
+    --text-primary: #2e384d;
+    --text-secondary: #5a6e85;
+    --text-muted: #8fa0b5;
+
+    /* Sombras Neumórficas */
+    --shadow-dark: #d1d9e6;
+    --shadow-light: #ffffff;
+
+    /* Variantes de Sombras (Relevos) */
+    --nm-flat: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
+    --nm-flat-hover: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+
+    --nm-convex: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+    --nm-concave: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
+
+    --nm-button: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+    --nm-button-active: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+
+    /* Detalhes de Destaque */
+    --accent-primary: #4f46e5;
+    /* Indigo */
+    --accent-secondary: #0d9488;
+    /* Teal */
+    --accent-gradient: linear-gradient(135deg, #000000 0%, #717171 50%, #c3c3c3 100%);
+
+    /* Cores MacBook */
+    --mac-red: #ff5f56;
+    --mac-yellow: #ffbd2e;
+    --mac-green: #27c93f;
+
+    /* Fontes */
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    scroll-behavior: smooth;
+}
+
+/* --- RESET & CONFIGURAÇÕES BÁSICAS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- CONTAINER --- */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* --- CABEÇALHO NEUMÓRFICO --- */
+.cabecalho {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--bg-primary);
+    padding: 1.2rem 0;
+    box-shadow: 0 4px 20px rgba(209, 217, 230, 0.4);
+    transition: all 0.3s ease;
+}
+
+.cabecalho .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabecalho h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.menu-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.menu-cabecalho a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    background: var(--bg-primary);
+    box-shadow: var(--nm-button);
+    transition: all 0.2s ease;
+}
+
+.menu-cabecalho a:hover {
+    color: var(--accent-primary);
+    box-shadow: var(--nm-button-active);
+}
+
+/* --- MAIN CONTENT LAYOUT --- */
+main {
+    margin-top: 8rem;
+    padding-bottom: 6rem;
+}
+
+/* --- TABS SYSTEM (ABAS NEUMÓRFICAS) --- */
+.tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 4rem 0 2rem 0;
+    padding: 0.5rem;
+}
+
+.tab-button {
+    background: var(--bg-primary);
+    box-shadow: var(--nm-button);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+}
+
+.tab-button:hover {
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+.tab-button.active {
+    color: var(--accent-primary);
+    box-shadow: var(--nm-button-active);
+    transform: translateY(0);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* --- SEÇÃO DE ESTRUTURA BÁSICA --- */
+.basic-structure-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 4rem 0;
+    border-bottom: 2px dashed var(--shadow-dark);
+}
+
+.basic-description h3 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.basic-description p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.basic-description ul {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+.basic-description li {
+    background: var(--bg-primary);
+    box-shadow: var(--nm-concave);
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.basic-description li::before {
+    content: '❯';
+    color: var(--accent-secondary);
+}
+
+/* --- TÍTULO DA SEÇÃO DE TAGS --- */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 5rem 0 3rem 0;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+}
+
+.section-title span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- TAG CARDS (NEUMÓRFICOS ELEVADOS) --- */
+.tag-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    background: var(--bg-primary);
+    box-shadow: var(--nm-flat);
+    border-radius: 24px;
+    padding: 3.5rem;
+    margin-bottom: 3.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.tag-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--nm-flat-hover);
+}
+
+.tag-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tag-badge {
+    align-self: flex-start;
+    background: var(--bg-primary);
+    box-shadow: var(--nm-concave);
+    color: var(--accent-primary);
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+.tag-info h4 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.tag-info h4::before {
+    content: '<';
+    color: var(--accent-primary);
+}
+
+.tag-info h4::after {
+    content: '>';
+    color: var(--accent-primary);
+}
+
+.tag-info .description {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* Atributos */
+.tag-attributes {
+    border-top: 2px dashed var(--shadow-dark);
+    padding-top: 1.8rem;
+}
+
+.tag-attributes h5 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.attr-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.attr-item {
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.attr-name {
+    font-family: var(--font-mono);
+    color: var(--accent-secondary);
+    font-weight: 700;
+    background: var(--bg-primary);
+    box-shadow: var(--nm-concave);
+    padding: 0.15rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.attr-desc {
+    color: var(--text-secondary);
+    line-height: 1.4;
+    padding-top: 0.2rem;
+}
+
+/* --- MOCKUP WINDOW (MACBOOK ASPECT) --- */
+.macbook-window {
+    background-color: var(--bg-primary);
+    box-shadow: var(--nm-convex);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.macbook-header {
+    background-color: var(--bg-primary);
+    height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0 1.2rem;
+    position: relative;
+    border-bottom: 1px solid var(--shadow-dark);
+}
+
+.macbook-dots {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    left: 1.2rem;
+}
+
+.mac-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.mac-dot.red {
+    background-color: var(--mac-red);
+}
+
+.mac-dot.yellow {
+    background-color: var(--mac-yellow);
+}
+
+.mac-dot.green {
+    background-color: var(--mac-green);
+}
+
+.macbook-title {
+    margin: 0 auto;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+.macbook-body {
+    padding: 1.8rem;
+    margin: 0.8rem;
+    background: var(--bg-primary);
+    box-shadow: var(--nm-concave);
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.macbook-body pre {
+    margin: 0;
+}
+
+.macbook-body code {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    white-space: pre;
+    color: var(--text-primary);
+}
+
+/* --- CLARO/NEUMÓRFICO SYNTAX HIGHLIGHTING (HTML) --- */
+.syntax-tag {
+    color: #b91c1c;
+    font-weight: 600;
+}
+
+/* Vermelho escuro */
+.syntax-attr {
+    color: #4f46e5;
+}
+
+/* Roxo/Indigo */
+.syntax-val {
+    color: #047857;
+}
+
+/* Verde escuro */
+.syntax-text {
+    color: #1e293b;
+}
+
+/* Slate escuro */
+.syntax-comm {
+    color: #718096;
+    font-style: italic;
+}
+
+/* Cinza */
+.syntax-doctype {
+    color: #6d28d9;
+    font-weight: 700;
+}
+
+/* Violeta escuro */
+
+/* --- INTERACTIVE PREVIEW PANEL --- */
+.preview-box {
+    margin-top: 1.5rem;
+}
+
+.preview-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.preview-content {
+    background: var(--bg-primary);
+    box-shadow: var(--nm-concave);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+
+.preview-content a.demo-link {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    background: var(--bg-primary);
+    color: var(--accent-primary);
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: var(--nm-button);
+    transition: all 0.2s ease;
+}
+
+.preview-content a.demo-link:hover {
+    color: var(--accent-secondary);
+    box-shadow: var(--nm-button-active);
+}
+
+.preview-content p.demo-para {
+    color: var(--text-primary);
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.preview-content p.demo-para strong {
+    color: var(--accent-primary);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+    .basic-structure-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .tag-card {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 2.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 0 1.2rem;
+    }
+
+    .menu-cabecalho {
+        display: none;
+    }
+
+    .basic-description h3 {
+        font-size: 2rem;
+    }
+
+    .tag-info h4 {
+        font-size: 2rem;
+    }
+}
+
+/* --- ANIMAÇÕES DE ENTRADA (NEUMÓRFICAS) --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.basic-structure-section,
+.tag-card,
+.section-title {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.basic-structure-section {
+    animation-delay: 0.1s;
+}
+
+.section-title {
+    animation-delay: 0.2s;
+}
+
+#tag-a {
+    animation-delay: 0.3s;
+}
+
+#tag-headings {
+    animation-delay: 0.4s;
+}
+
+#tag-p {
+    animation-delay: 0.5s;
+}
