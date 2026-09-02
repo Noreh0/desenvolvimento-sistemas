@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoque - Gestão Inteligente de Estoque</title>
+    <style>
+        /* Paleta de Cores e Reset */
+        :root {
+            --azul-escuro: #1E3A8A; 
+            --azul-claro: #3B82F6; 
+            --creme-fundo: #FDFBF7; 
+            --creme-escuro: #F3EFE6; 
+            --texto-escuro: #1F2937;
+            --texto-claro: #4B5563;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--creme-fundo);
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+
+        /* Navegação (Header) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--creme-fundo);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--azul-escuro);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--azul-claro);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto-escuro);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--azul-claro);
+        }
+
+        /* Botões */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            color: var(--azul-escuro);
+            border: 2px solid var(--azul-escuro);
+        }
+
+        .btn-login:hover {
+            background-color: var(--azul-escuro);
+            color: var(--creme-fundo);
+        }
+
+        .btn-primary {
+            background-color: var(--azul-claro);
+            color: white;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--azul-escuro);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+        }
+
+        /* Seção Principal (Hero) */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5rem 5%;
+            min-height: calc(100vh - 80px);
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--azul-escuro);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--texto-claro);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dashboard-mockup {
+            width: 100%;
+            max-width: 500px;
+            height: 350px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border: 1px solid var(--creme-escuro);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mockup-header { width: 100%; height: 40px; background-color: var(--creme-escuro); border-radius: 6px; }
+        .mockup-body { display: flex; gap: 1rem; height: 100%; }
+        .mockup-sidebar { width: 30%; background-color: var(--azul-escuro); border-radius: 6px; opacity: 0.1; }
+        .mockup-content { width: 70%; display: flex; flex-direction: column; gap: 1rem; }
+        .mockup-card { background-color: var(--azul-claro); height: 80px; border-radius: 6px; opacity: 0.2; }
+        .mockup-table { background-color: var(--creme-escuro); flex-grow: 1; border-radius: 6px; }
+
+        /* ======== NOVAS SEÇÕES ======== */
+        
+        .section {
+            padding: 6rem 5%;
+        }
+
+        .bg-white {
+            background-color: #FFFFFF;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--azul-escuro);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--texto-claro);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Funcionalidades (O que fazemos) */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: var(--creme-fundo);
+            border: 1px solid var(--creme-escuro);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.08);
+            border-color: var(--azul-claro);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            color: var(--azul-escuro);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .feature-card p {
+            color: var(--texto-claro);
+            font-size: 1rem;
+        }
+
+        /* Negócios (Para quem servimos) */
+        .business-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .business-tag {
+            background-color: white;
+            border: 2px solid var(--azul-claro);
+            color: var(--azul-escuro);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .business-tag:hover {
+            background-color: var(--azul-claro);
+            color: white;
+            cursor: default;
+            transform: scale(1.05);
+        }
+
+        /* Footer simples */
+        footer {
+            background-color: var(--azul-escuro);
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+            margin-top: 2rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding: 3rem 5%; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content { margin-bottom: 3rem; }
+            .nav-links { display: none; }
+            .section-header h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo">Stoque<span>.</span></a>
+        <nav class="nav-links">
+            <a href="#funcionalidades">O que fazemos</a>
+            <a href="#publico">Para quem</a>
+            <!-- Ajuste a url abaixo para a rota de login do seu app Django -->
+            <a href="{% url 'login' %}" class="btn btn-login">Fazer Login</a>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Controle total do seu estoque, de onde você estiver.</h1>
+            <p>Um sistema simples e poderoso para administrar entradas, saídas e gerenciar produtos em múltiplos locais simultaneamente. Esqueça as planilhas complexas.</p>
+            
+            <!-- Botão Principal: Ajuste a url para a dashboard principal do usuário -->
+            <a href="{% url 'dashboard_estoque' %}" class="btn btn-primary">Acessar meu Gerenciador</a>
+        </div>
+        
+        <div class="hero-image">
+            <div class="dashboard-mockup">
+                <div class="mockup-header"></div>
+                <div class="mockup-body">
+                    <div class="mockup-sidebar"></div>
+                    <div class="mockup-content">
+                        <div class="mockup-card"></div>
+                        <div class="mockup-table"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- NOVA SEÇÃO: O QUE FAZEMOS -->
+    <section id="funcionalidades" class="section bg-white">
+        <div class="section-header">
+            <h2>Como o Stoque simplifica seu dia a dia?</h2>
+            <p>Tenha todas as ferramentas necessárias para não perder dinheiro com estoque parado ou produtos esgotados, direto do seu navegador.</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"></div>
+                <h3>Entradas e Saídas Rápidas</h3>
+                <p>Registre movimentações de mercadorias com poucos cliques, mantendo o saldo do seu inventário sempre preciso e livre de erros.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"></div>
+                <h3>Múltiplos Locais (Multi-estoque)</h3>
+                <p>Gerencie produtos em filiais, depósitos externos ou vitrines diferentes a partir de um único painel de controle.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"></div>
+                <h3>Avisos de Estoque Mínimo</h3>
+                <p>Receba alertas visuais no seu gerenciador quando um produto estiver acabando, garantindo que você nunca deixe de vender.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: PARA QUEM SERVIMOS -->
+    <section id="publico" class="section">
+        <div class="section-header">
+            <h2>Feito para o seu modelo de negócio</h2>
+            <p>O Stoque é altamente adaptável. Não importa o tamanho ou o setor da sua empresa, se você precisa de organização, nós atendemos você.</p>
+        </div>
+
+        <div class="business-grid">
+            <div class="business-tag"><span></span>E-commerces</div>
+            <div class="business-tag"><span></span>Lojas de Varejo</div>
+            <div class="business-tag"><span></span>Indústrias</div>
+            <div class="business-tag"><span></span>Restaurantes e Bares</div>
+            <div class="business-tag"><span></span>Depósitos e Galpões</div>
+            <div class="business-tag"><span></span>Farmácias e Clínicas</div>
+            <div class="business-tag"><span></span>Redes de Franquias</div>
+            <div class="business-tag"><span></span>Assistências Técnicas</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Stoque. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

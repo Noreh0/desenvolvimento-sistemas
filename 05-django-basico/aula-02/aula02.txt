@@ -1,0 +1,68 @@
+Esta aula tem que ser introdutória a Django com python, trazendo os principais aspectos e como vamos usar, ela deverá ter uma duração de 4 horas com conteúdo prático e atividades usando de exemplo esse conceito:
+Slide:
+    Apresentação da Aula
+    Objetivo da Aula(Explicando o que vamos ver)
+    Trazendo um slide com questionamento para provocar o intuito do porque usar aquilo que será apresentado em aula
+    Problema do mundo real que o conteúdo da Aula vai resolver
+    Apresentar o conteúdo técnico(exemplo: como criar uma arquitetura simples em django, inicializando, quais comandos usar)
+    Exemplo da arquitetura ou código
+    2 ou 3 - Exemplo prático para começarmos a mexermos com a estrutura
+    Mostrar a importancia ou diferença dele para outros modelos no conceito
+    Mostrar a importancia ou diferença dele para outros modelos na prática digital
+    Estrutura profissional - como separar as pastas e o que cada uma deve ter
+    Atividades:
+    1 a 6 atividades para finalizar (pode induzir a enteragirem entre elas)
+
+Trazer as explicações dos comandos usados durante a aula e sua sequência lógica de uso. Introduzir os comandos e quando serão utilizados no processo da aula:
+.\venv\Scripts\Activate.ps1
+python manage.py startapp produtos
+
+
+Nesta aula, você aprendeu sobre a importância de proteger informações sensíveis do seu projeto Django, como a SECRET_KEY, ao usar ferramentas de versionamento como Git e GitHub.
+
+O instrutor mostrou que enviar a SECRET_KEY diretamente para o GitHub pode gerar alertas de segurança. Para resolver isso, você aprendeu a:
+
+    Copiar e remover a SECRET_KEY do arquivo settings.py para entender a necessidade dela.
+    Instalar a dependência python-dotenv usando pip install python-dotenv.
+    Atualizar o arquivo requirements.txt com pip freeze > requirements.txt.
+    Criar um arquivo .env na pasta raiz do projeto para armazenar a SECRET_KEY de forma segura.
+    Importar os e load_dotenv no settings.py e chamar load_dotenv().
+    Substituir a SECRET_KEY no settings.py por str(os.getenv('SECRET_KEY')) para carregar a chave do arquivo .env.
+
+Com essas configurações, a SECRET_KEY fica armazenada localmente e não é enviada para o GitHub, aumentando a segurança do seu projeto.
+
+As configurações relacionadas ao idioma da aplicação ficam em "setup > settings.py".
+
+Nesse arquivo, encontramos todas as configurações do projeto, como dependências, templates e mais. Portanto, vamos usá-lo muito em nossas operações, porque precisaremos manipular essas configurações. Nas linhas 106 e 108 do código do arquivo,encontramos "LANGUAGE_CODE" e "TIME_ZONE", exatamente o que procurávamos.
+
+Ao lado de "LANGUAGE_CODE", encontraremos 'en-us', que representa o inglês dos Estados Unidos. Vamos substituir para 'pt-br'. Com isso, vamos alterar a linguagem para português brasileiro. Em "TIME_ZONE", usaremos 'America/Sao Paulo'. Isso será o suficiente para ajustar nosso fuso horário.
+
+
+Nesta aula, aprendemos a criar um "app" dentro do nosso projeto Django. O instrutor explicou que, enquanto o projeto é a coleção de todas as configurações, os apps são pedaços com funcionalidades específicas.
+
+Para isso, seguimos os seguintes passos:
+
+    Paramos o servidor com "Ctrl + C".
+    Ativamos o ambiente virtual (venv) com ./venv/Scripts/Activate.ps1.
+    Utilizamos o comando python manage.py help para visualizar os comandos disponíveis e entender a diferença entre startapp e startproject.
+    Criamos um app chamado "galeria" com o comando python manage.py startapp galeria. Este app será responsável por gerenciar o código relacionado a imagens e fotos.
+    Após a criação da pasta "galeria" e seus arquivos, sinalizamos que o app "galeria" faz parte do projeto. Isso foi feito editando o arquivo setup > settings.py, adicionando 'galeria' à lista INSTALLED_APPS.
+    Por fim, reiniciamos o servidor com python manage.py runserver.
+
+Ainda não vemos uma página diferente, mas no próximo vídeo, aprenderemos a fazer com que nosso app exiba algo na tela.
+
+Nesta aula, você aprendeu a exibir informações na tela usando o Django. Primeiro, foi necessário importar o HttpResponse do django.http no arquivo views.py. Em seguida, você criou uma função chamada index que retorna um HttpResponse com o conteúdo HTML desejado, como "Stoques" em um <h1> e "Bem vindo ao Stoques" em um <p>.
+
+Para que essa informação aparecesse no navegador, você configurou as rotas no arquivo urls.py do projeto. Lá, você importou a função index do seu arquivo views.py e adicionou um path vazio ('') que aponta para a função index, fazendo com que ela seja exibida na página principal.
+
+Com essas configurações, ao acessar o servidor, o navegador exibiu o conteúdo "Stoques" e "Bem vindo ao Stoques".
+
+Nesta aula, você aprendeu a organizar as URLs de um projeto Django de forma mais eficiente. Em vez de listar todas as rotas no arquivo urls.py principal do projeto, você viu como criar um arquivo urls.py específico para cada aplicativo (app), como o app "galeria".
+
+Para isso, você:
+
+    Criou um arquivo urls.py dentro da pasta do app "galeria".
+    Moveu a definição da rota da página inicial (path('', index)) para este novo arquivo.
+    No arquivo urls.py principal do projeto (na pasta "setup"), você importou o método include e o utilizou para direcionar todas as URLs que começam com o caminho vazio para o arquivo urls.py do app "galeria" (include('galeria.urls')).
+
+Essa prática ajuda a isolar o roteamento de cada app, tornando o código mais organizado e fácil de manter, especialmente em projetos maiores com muitos apps e rotas. Ao final, você verificou que a página continuou funcionando normalmente, confirmando o sucesso da implementação.

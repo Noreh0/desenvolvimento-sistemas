@@ -1,0 +1,28 @@
+Esta aula tem que ser introdutória a Django com python, trazendo os principais aspectos e como vamos usar, ela deverá ter uma duração de 4 horas com conteúdo prático e atividades usando de exemplo esse conceito:
+Slide:
+    Apresentação da Aula
+    Objetivo da Aula(Explicando o que vamos ver)
+    Trazendo um slide com questionamento para provocar o intuito do porque usar aquilo que será apresentado em aula
+    Problema do mundo real que o conteúdo da Aula vai resolver
+    Apresentar o conteúdo técnico(exemplo: como criar uma arquitetura simples em django, inicializando, quais comandos usar)
+    Exemplo da arquitetura ou código
+    2 ou 3 - Exemplo prático para começarmos a mexermos com a estrutura
+    Mostrar a importancia ou diferença dele para outros modelos no conceito
+    Mostrar a importancia ou diferença dele para outros modelos na prática digital
+    Estrutura profissional - como separar as pastas e o que cada uma deve ter
+    Atividades:
+    1 a 6 atividades para finalizar (pode induzir a enteragirem entre elas)
+
+Nesta aula, aprendemos a configurar a navegação entre a página principal e a página de imagem usando o recurso de URL name no Django.
+
+Inicialmente, a navegação não funcionava corretamente porque o href nas imagens da página principal apontava para "imagem.html", o que gerava um erro. Para corrigir isso, fizemos o seguinte:
+
+    Adicionamos name='imagem' ao path da página de imagem no arquivo urls.py.
+    Substituímos imagem.html por {% url 'imagem' %} no href das imagens em index.html.
+
+Depois, para permitir a navegação de volta para a página principal a partir da página de imagem, fizemos o processo inverso:
+
+    Adicionamos name='index' ao path da página principal no arquivo urls.py.
+    Substituímos index.html por {% url 'index' %} no href do botão "Home" em imagem.html.
+
+Essas alterações garantiram que a navegação entre as páginas aconteça de forma dinâmica e correta, utilizando os nomes das URLs registradas no Django.

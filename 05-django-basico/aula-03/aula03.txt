@@ -1,0 +1,61 @@
+Esta aula tem que ser introdutória a Django com python, trazendo os principais aspectos e como vamos usar, ela deverá ter uma duração de 4 horas com conteúdo prático e atividades usando de exemplo esse conceito:
+Slide:
+    Apresentação da Aula
+    Objetivo da Aula(Explicando o que vamos ver)
+    Trazendo um slide com questionamento para provocar o intuito do porque usar aquilo que será apresentado em aula
+    Problema do mundo real que o conteúdo da Aula vai resolver
+    Apresentar o conteúdo técnico(exemplo: como criar uma arquitetura simples em django, inicializando, quais comandos usar)
+    Exemplo da arquitetura ou código
+    2 ou 3 - Exemplo prático para começarmos a mexermos com a estrutura
+    Mostrar a importancia ou diferença dele para outros modelos no conceito
+    Mostrar a importancia ou diferença dele para outros modelos na prática digital
+    Estrutura profissional - como separar as pastas e o que cada uma deve ter
+    Atividades:
+    1 a 6 atividades para finalizar (pode induzir a enteragirem entre elas)
+
+Nesta aula, aprendemos a configurar o Django para renderizar páginas HTML. Vimos que não é uma boa prática desenvolver toda a aplicação diretamente no HttpResponse dentro de galeria > views.py.
+
+Para resolver isso, configuramos o arquivo setup > settings.py, na seção TEMPLATES, para indicar onde o Django deve procurar os arquivos HTML. Criamos uma pasta chamada "templates" dentro de "alura-space" e a adicionamos à configuração 'DIRS' usando os.path.join(BASE_DIR, 'templates').
+
+Em seguida, criamos um arquivo index.html dentro da nova pasta "templates" com um título <h1> e um parágrafo <p>.
+
+Por fim, modificamos galeria > views.py para usar a função render do Django, que recebe a request e o nome do arquivo HTML ('index.html') como parâmetros, substituindo o HttpResponse. Isso nos permitiu isolar o código HTML em um local específico e ter a view renderizando essa página.
+
+Nesta aula, você aprendeu a integrar um novo visual ao seu projeto Django. O primeiro passo foi organizar o código HTML, movendo o arquivo "index.html" para uma nova pasta chamada "galeria", dentro de "templates". Essa organização exige uma pequena alteração no arquivo "galeria > migrations > view.py" para que o Django saiba onde encontrar o template.
+
+Em seguida, você substituiu o conteúdo do "index.html" do seu projeto pelo código HTML do projeto Alura Space, que foi disponibilizado para download. Ao final da aula, você conseguiu visualizar o novo layout no navegador, embora ainda sem os estilos CSS.
+
+Nesta aula, você aprendeu a carregar e configurar arquivos estáticos, como CSS, em sua aplicação Django. O processo envolveu os seguintes passos:
+
+    Configuração no settings.py:
+        Foi definido o STATICFILES_DIRS para indicar onde o Django deve procurar por arquivos estáticos, apontando para a pasta setup/static.
+        Foi configurado o STATIC_ROOT para especificar o diretório onde o Django coletará todos os arquivos estáticos da aplicação.
+
+    Organização dos arquivos:
+        Uma nova pasta static foi criada dentro da pasta setup para armazenar os arquivos estáticos.
+        Os arquivos CSS e outros ativos foram movidos para essa nova pasta.
+
+    Coleta de arquivos estáticos:
+        O comando python manage.py collectstatic foi executado no terminal para que o Django reunisse todos os arquivos estáticos nos diretórios configurados.
+
+    Uso de arquivos estáticos no template HTML:
+        No arquivo index.html, foi adicionada a tag {% load static %} no início para habilitar o uso de arquivos estáticos.
+        O caminho para o arquivo CSS foi alterado usando a tag {% static 'caminho/do/arquivo.css' %} para que o Django pudesse encontrar e carregar corretamente o estilo.
+
+Ao final da aula, você pôde ver as mudanças de estilo aplicadas ao projeto no navegador, indicando que os arquivos estáticos foram carregados com sucesso.
+
+O instrutor mostrou como adicionar {% static ' antes do caminho do arquivo e ' %} depois, para que as imagens sejam exibidas corretamente no navegador.
+
+Você viu como aplicar essa técnica para o logo, o ícone de busca, os ícones da barra lateral, o banner e as fotos da parte inferior da página. Para otimizar o processo, foi utilizada a tecla "alt" para selecionar múltiplos locais no código e fazer as adições de uma só vez.
+
+O objetivo principal foi exibir todas as imagens estáticas na página, preparando o terreno para aprender a evitar repetições de código na próxima aula.
+
+Nesta aula, aprendemos a adicionar uma nova página à nossa aplicação, a página "imagem.html". Para isso, seguimos os seguintes passos:
+
+    Criação do arquivo HTML: Criamos o arquivo imagem.html dentro da pasta templates/galeria e colamos o conteúdo fornecido pelo instrutor.
+    Criação da função de visualização (view): Em galeria/views.py, criamos a função imagem que renderiza o template galeria/imagem.html.
+    Criação da rota (URL): Em galeria/urls.py, adicionamos uma nova rota para 'imagem/' que aponta para a função imagem.
+
+Ao testar, percebemos que, embora a página "imagem" seja carregada, o link na página inicial ainda causa um erro porque o Django não processa .html na URL. Se removermos o .html da URL, a página aparece, mas sem estilo.
+
+O desafio proposto é carregar os estilos dessa página usando LOAD_STATIC para que ela fique bonita. No próximo vídeo, veremos como resolver o problema do erro ao clicar na imagem da página inicial.

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoque - Relatório de Movimentações</title>
+    <style>
+        /* Paleta de Cores e Reset (Mesma identidade) */
+        :root {
+            --azul-escuro: #1E3A8A; 
+            --azul-claro: #3B82F6; 
+            --creme-fundo: #FDFBF7; 
+            --creme-escuro: #F3EFE6; 
+            --texto-escuro: #1F2937;
+            --texto-claro: #4B5563;
+            --verde-sucesso: #10B981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--creme-fundo);
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+
+        /* Navegação Interna */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: white;
+            border-bottom: 1px solid var(--creme-escuro);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--azul-escuro);
+            text-decoration: none;
+        }
+
+        .btn-voltar {
+            text-decoration: none;
+            color: var(--texto-claro);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .btn-voltar:hover {
+            color: var(--azul-claro);
+        }
+
+        /* Container Principal do Dashboard */
+        .dashboard-container {
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .page-header h1 {
+            color: var(--azul-escuro);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: var(--texto-claro);
+            font-size: 1.1rem;
+        }
+
+        /* Cards de Resumo */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--creme-escuro);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+            color: var(--texto-claro);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-value {
+            font-size: 2rem;
+            color: var(--azul-escuro);
+            font-weight: 700;
+        }
+
+        /* Tabela de Produtos */
+        .table-container {
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid var(--creme-escuro);
+            overflow-x: auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        thead {
+            background-color: var(--creme-escuro);
+        }
+
+        th {
+            padding: 1.2rem 1.5rem;
+            font-weight: 600;
+            color: var(--azul-escuro);
+            font-size: 0.95rem;
+        }
+
+        td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--creme-escuro);
+            color: var(--texto-escuro);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background-color: var(--creme-fundo);
+        }
+
+        /* Badges e Status */
+        .rank {
+            background-color: var(--azul-claro);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .location-tag {
+            background-color: var(--creme-escuro);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--texto-escuro);
+        }
+
+        .trend-up {
+            color: var(--verde-sucesso);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Simplificado para o Painel -->
+    <header>
+        <a href="/" class="logo">Stoque<span>.</span></a>
+        <!-- Ajuste a url para a home do painel do usuário -->
+        <a href="{% url 'dashboard_estoque' %}" class="btn-voltar">
+            <span>&larr;</span> Voltar ao Painel
+        </a>
+    </header>
+
+    <main class="dashboard-container">
+        
+        <div class="page-header">
+            <h1>Produtos com Maior Movimentação</h1>
+            <p>Acompanhe os itens com maior volume de entradas e saídas nos seus estoques.</p>
+        </div>
+
+        <!-- Cards de Resumo Gerencial -->
+        <div class="summary-cards">
+            <div class="card">
+                <div class="card-title">Total de Movimentações (Mês)</div>
+                <!-- Exemplo de variável Django: {{ total_movimentacoes }} -->
+                <div class="card-value">12.450</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Item Mais Ativo</div>
+                <!-- Exemplo de variável Django: {{ item_top.nome }} -->
+                <div class="card-value">Cabo USB-C</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Local Principal</div>
+                <!-- Exemplo de variável Django: {{ local_principal.nome }} -->
+                <div class="card-value">Depósito Central</div>
+            </div>
+        </div>
+
+        <!-- Tabela de Produtos -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Local de Estoque</th>
+                        <th>Qtd. Movimentada</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- INÍCIO DO LOOP DJANGO -->
+                    <!-- {% for produto in produtos_mais_vendidos %} -->
+                    
+                    <!-- Linha 1 (Exemplo Fixo) -->
+                    <tr>
+                        <td><span class="rank">#1</span></td>
+                        <td><strong>Cabo USB-C Reforçado</strong></td>
+                        <td>Eletrônicos</td>
+                        <td><span class="location-tag">Depósito Central</span></td>
+                        <td>1.240 un.</td>
+                        <td><span class="trend-up">&uarr; Alta Rotação</span></td>
+                    </tr>
+
+                    <!-- Linha 2 (Exemplo Fixo) -->
+                    <tr>
+                        <td><span class="rank">#2</span></td>
+                        <td><strong>Monitor IPS 24"</strong></td>
+                        <td>Informática</td>
+                        <td><span class="location-tag">Loja Matriz</span></td>
+                        <td>890 un.</td>
+                        <td><span class="trend-up">&uarr; Alta Rotação</span></td>
+                    </tr>
+
+                    <!-- Linha 3 (Exemplo Fixo) -->
+                    <tr>
+                        <td><span class="rank">#3</span></td>
+                        <td><strong>Teclado Mecânico RGB</strong></td>
+                        <td>Acessórios</td>
+                        <td><span class="location-tag">Filial Sul</span></td>
+                        <td>650 un.</td>
+                        <td><span class="trend-up">&uarr; Alta Rotação</span></td>
+                    </tr>
+
+                    <!-- Exemplo de como usar a variável do Django -->
+                    <!-- 
+                    <tr>
+                        <td><span class="rank">#{{ forloop.counter }}</span></td>
+                        <td><strong>{{ produto.nome }}</strong></td>
+                        <td>{{ produto.categoria }}</td>
+                        <td><span class="location-tag">{{ produto.local }}</span></td>
+                        <td>{{ produto.quantidade_movimentada }} un.</td>
+                        <td><span class="trend-up">&uarr; {{ produto.status }}</span></td>
+                    </tr>
+                    -->
+                    
+                    <!-- FIM DO LOOP DJANGO -->
+                    <!-- {% empty %}
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: var(--texto-claro);">Nenhuma movimentação registrada neste período.</td>
+                    </tr>
+                    {% endfor %} -->
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+</body>
+</html>
