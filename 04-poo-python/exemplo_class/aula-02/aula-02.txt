@@ -1,0 +1,72 @@
+Esta aula tem que ser introdutória a Django com python, trazendo os principais aspectos e como vamos usar, ela deverá ter uma duração de 4 horas com conteúdo prático e atividades usando de exemplo esse conceito:
+Slide:
+    Apresentação da Aula
+    Objetivo da Aula(Explicando o que vamos ver)
+    Trazendo um slide com questionamento para provocar o intuito do porque usar aquilo que será apresentado em aula
+    Problema do mundo real que o conteúdo da Aula vai resolver
+    Apresentar o conteúdo técnico(exemplo: como criar uma arquitetura simples em django, inicializando, quais comandos usar)
+    Exemplo da arquitetura ou código
+    2 ou 3 - Exemplo prático para começarmos a mexermos com a estrutura
+    Mostrar a importancia ou diferença dele para outros modelos no conceito
+    Mostrar a importancia ou diferença dele para outros modelos na prática digital
+    Estrutura profissional - como separar as pastas e o que cada uma deve ter
+    Atividades:
+    1 a 6 atividades para finalizar (pode induzir a enteragirem entre elas)
+
+
+usar o decorador @property em Python para modificar a forma como um atributo é lido. O exemplo prático foi com o atributo ativo da classe Restaurante. Em vez de exibir True ou False, você configurou para que ele mostre um emoji de caixa marcada () se o restaurante estiver ativo e um emoji de caixa vazia () se estiver inativo.
+
+Além disso, foi abordada a importância de proteger atributos que não devem ser alterados diretamente. Para isso, você aprendeu a usar o prefixo _ (underscore) no nome do atributo, como em self._ativo, indicando que ele é um atributo protegido e que seu acesso e modificação devem ser feitos por meio de métodos ou propriedades.
+
+Por fim, a aula mostrou como formatar a exibição da lista de restaurantes, utilizando o método .ljust() para alinhar as colunas de "Nome do restaurante", "Categoria" e "Status", deixando a saída no terminal mais organizada e legível.
+
+usar o decorador @property em Python para modificar a forma como um atributo é lido. O exemplo prático foi com o atributo ativo da classe Restaurante. Em vez de exibir True ou False, você configurou para que ele mostre um emoji de caixa marcada () se o restaurante estiver ativo e um emoji de caixa vazia () se estiver inativo.
+
+Além disso, foi abordada a importância de proteger atributos que não devem ser alterados diretamente. Para isso, você aprendeu a usar o prefixo _ (underscore) no nome do atributo, como em self._ativo, indicando que ele é um atributo protegido e que seu acesso e modificação devem ser feitos por meio de métodos ou propriedades.
+
+Por fim, a aula mostrou como formatar a exibição da lista de restaurantes, utilizando o método .ljust() para alinhar as colunas de "Nome do restaurante", "Categoria" e "Status", deixando a saída no terminal mais organizada e legível.
+
+Primeiro, o instrutor mostrou como usar o decorador @classmethod para indicar que um método pertence à classe e não a uma instância específica. Isso foi aplicado ao método listar_restaurantes(), que agora usa cls em vez do nome da classe para se referir a ela, tornando o código mais legível e alinhado às boas práticas de desenvolvimento.
+
+Em seguida, foi criado um novo método chamado alternar_estado() para os objetos da classe Restaurante. Diferente do @classmethod, este método atua sobre as instâncias dos objetos, permitindo mudar o estado do atributo _ativo de um restaurante.
+
+Ao final, você viu como aplicar o método alternar_estado() a um restaurante específico, alterando seu status de inativo para ativo e observando a mudança na listagem dos restaurantes.
+
+organizar seu código de forma mais profissional, separando a definição da classe Restaurante em um arquivo (restaurante.py) e a criação das instâncias e a lógica principal da aplicação em outro arquivo (app.py).
+
+Os instrutores mostraram como usar a instrução from modelos.restaurante import Restaurante para importar a classe Restaurante para o arquivo app.py. Isso permite que você crie objetos Restaurante e utilize seus métodos, como listar_restaurantes() e alternar_estado(), no seu programa principal.
+
+Além disso, foi explicado o propósito da pasta __pycache__ e dos arquivos .pyc que são gerados. Eles servem para otimizar o desempenho do Python, armazenando o código compilado em bytecode para que o interpretador possa executá-lo de forma mais eficiente.
+
+Em resumo, a aula focou em como estruturar projetos Python usando importações para reutilizar classes e em como o Python otimiza a execução de módulos importados.
+
+criar a classe Avaliacao para registrar as avaliações dos restaurantes.
+
+Primeiro, foi criada a classe Avaliacao em um novo arquivo avaliacao.py, com um construtor __init__ que recebe o nome do cliente e a nota atribuída. Os atributos _cliente e _nota foram definidos com um underline para indicar que são dados sensíveis e para limitar sua manipulação direta.
+
+Em seguida, na classe Restaurante, você adicionou um atributo _avaliacao como uma lista vazia no construtor, para armazenar os objetos Avaliacao. Para que a classe Restaurante pudesse usar a classe Avaliacao, foi necessário importá-la no arquivo restaurante.py.
+
+Por fim, foi criado o método receber_avaliacao na classe Restaurante. Este método recebe o cliente e a nota, cria um objeto Avaliacao com essas informações e o adiciona à lista _avaliacao do restaurante. Você testou essa funcionalidade no arquivo app.py, adicionando várias avaliações ao restaurante_praca.
+
+A próxima etapa será visualizar essas avaliações!
+
+o foco foi em como exibir a avaliação média de cada restaurante. Para isso, foi criado um novo método chamado media_avaliacoes() dentro da classe Restaurante.
+
+Os passos para a criação desse método foram:
+
+    Verificação inicial: Se não houver nenhuma avaliação para o restaurante, o método retorna 0.
+    Cálculo da soma das notas: Utilizando a função sum(), todas as notas das avaliações (_nota) são somadas.
+    Contagem da quantidade de notas: A função len() é usada para obter o número total de avaliações.
+    Cálculo da média: A média é calculada dividindo a soma das notas pela quantidade de notas.
+    Arredondamento da média: A função round() é aplicada para arredondar a média para apenas uma casa decimal, conforme a regra de negócio.
+    Retorno da média: O método retorna o valor da média calculada e arredondada.
+    Transformação em propriedade: O método media_avaliacoes() foi transformado em uma @property para que a média possa ser acessada como um atributo do objeto Restaurante, facilitando a leitura das informações.
+
+Com essas implementações, o objetivo é conseguir visualizar a média das avaliações para cada restaurante.
+
+aprendemos a exibir a média das avaliações dos restaurantes diretamente no terminal, junto com as outras informações.
+
+Para isso, os instrutores adicionaram uma nova coluna de "Avaliação" no método listar_restaurantes(). Em seguida, eles incluíram a media_avaliacoes de cada restaurante nessa nova coluna.
+
+Durante o processo, surgiu um erro porque o método ljust() não pode ser aplicado diretamente a números (tipo float). A solução foi converter a média das avaliações para uma string usando str() antes de aplicar o ljust(), garantindo que tudo ficasse alinhado e organizado.
+
