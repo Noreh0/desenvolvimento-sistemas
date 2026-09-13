@@ -16,14 +16,14 @@ class Restaurante:
 
     @property
     def ativo(self):
-        return 'verdadeiro' if self._ativo else 'falso'
+        return 'inativo' if self._ativo else 'ativo'
 restaurante_01 = Restaurante("Madá Pizzaria", "Italiana")
 restaurante_01 = Restaurante("Vinigucci Pizzaria", "Italiana")
 
 Restaurante.listar_restaurante()
 
 
-# print(restaurantes)
+print(restaurante_01)
 # print(restaurante_01)
 # print(dir(restaurante_01))
 # print(restaurante_01)

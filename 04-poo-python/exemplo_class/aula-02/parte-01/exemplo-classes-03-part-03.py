@@ -21,6 +21,7 @@ class Restaurante:
 
     def alternar_estado(self):
         self._ativo = not self._ativo
+    
 
 restaurante_01 = Restaurante("Madá Pizzaria", "Italiana")
 restaurante_01.alternar_estado()

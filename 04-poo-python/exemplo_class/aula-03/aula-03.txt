@@ -1,0 +1,52 @@
+Esta aula tem que ser introdutória a Django com python, trazendo os principais aspectos e como vamos usar, ela deverá ter uma duração de 4 horas com conteúdo prático e atividades usando de exemplo esse conceito:
+Slide:
+    Apresentação da Aula
+    Objetivo da Aula(Explicando o que vamos ver)
+    Trazendo um slide com questionamento para provocar o intuito do porque usar aquilo que será apresentado em aula
+    Problema do mundo real que o conteúdo da Aula vai resolver
+    Apresentar o conteúdo técnico(exemplo: como criar uma arquitetura simples em django, inicializando, quais comandos usar)
+    Exemplo da arquitetura ou código
+    2 ou 3 - Exemplo prático para começarmos a mexermos com a estrutura que eu possa mistar com conceitos ténicos
+    Mostrar a importancia ou diferença dele para outros modelos no conceito
+    Mostrar a importancia ou diferença dele para outros modelos na prática digital
+    Estrutura profissional - como separar as pastas e o que cada uma deve ter
+    Atividades:
+    1 a 6 atividades para finalizar (pode induzir a enteragirem entre elas)
+
+
+começamos a expandir nosso projeto de restaurantes para incluir o cardápio. Para isso, os instrutores nos guiaram na criação de uma estrutura organizada usando o paradigma de orientação a objetos.
+
+Os pontos principais foram:
+
+    Criação da pasta cardapio: Para organizar melhor o código, foi criada uma nova pasta cardapio dentro de modelos, onde as classes relacionadas ao cardápio serão armazenadas.
+    Criação da classe ItemCardapio: Esta é a classe base para todos os itens do cardápio. Ela possui um construtor (__init__) que define os atributos _nome e _preco, que são comuns a qualquer item.
+    Criação das classes Prato e Bebida: Foram criadas duas novas classes, Prato e Bebida, que também terão seus próprios construtores. A ideia é que elas herdem as características básicas de ItemCardapio, mas também tenham atributos específicos (como descricao para Prato e tamanho para Bebida).
+
+Os instrutores destacaram que, no próximo vídeo, será abordado como associar Prato e Bebida à classe ItemCardapio por meio do conceito de herança, fazendo com que ItemCardapio seja a "classe mãe".
+
+conceito de herança em Python, que permite que uma classe herde características de outra classe.
+
+Os instrutores mostraram como fazer isso na prática, utilizando a classe ItemCardapio como base. As classes Prato e Bebida foram criadas para herdar os atributos nome e preco de ItemCardapio.
+
+Para indicar a herança, você viu que é preciso importar a classe base e, na declaração da subclasse, colocar o nome da classe base entre parênteses, como em class Prato(ItemCardapio):.
+
+Dentro do construtor das subclasses (__init__), foi utilizado super().__init__(nome, preco) para chamar o construtor da classe pai e inicializar os atributos herdados. Além disso, você viu que é possível adicionar atributos específicos a cada subclasse, como descricao para Prato e tamanho para Bebida, sem se prender apenas às informações da classe base.
+
+A principal vantagem destacada é a manutenção de um padrão e uma linha de raciocínio para todas as classes que compartilham características em comum.
+instanciar as classes Bebida e Prato que foram criadas anteriormente.
+
+Primeiro, foi feita uma limpeza no arquivo app.py, removendo códigos não utilizados e ajustando a função main. Em seguida, você importou as classes Bebida e Prato para o arquivo app.py, da mesma forma que a classe Restaurante.
+
+Depois, você instanciou uma bebida (Suco de Melancia) e um prato (Pãozinho), passando os parâmetros necessários para seus respectivos construtores. Para melhorar a visualização desses objetos ao imprimi-los, você implementou o método especial __str__ nas classes Bebida e Prato, fazendo com que retornassem o nome do item.
+
+Ao final, você conseguiu visualizar no terminal os nomes "Suco de Melancia" e "Paozinho" ao executar o app.py, confirmando que as instâncias foram criadas e exibidas corretamente. O próximo passo será adicionar esses itens ao cardápio do restaurante.
+
+incluir itens no cardápio de um restaurante.
+
+Primeiro, foi adicionado um atributo _cardapio como uma lista vazia na classe Restaurante, no arquivo restaurante.py.
+
+Em seguida, foram criados dois métodos: adicionar_bebida_no_cardapio() e adicionar_prato_no_cardapio(). Ambos os métodos recebem um objeto (bebida ou prato, respectivamente) e o adicionam à lista _cardapio usando o método .append().
+
+Por fim, no arquivo app.py, você viu como usar esses novos métodos para adicionar uma bebida (bebida_suco) e um prato (prato_paozinho) ao restaurante_praca.
+
+O próximo passo será criar um método para listar esses itens do cardápio.
