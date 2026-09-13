@@ -50,3 +50,19 @@ Em seguida, foram criados dois métodos: adicionar_bebida_no_cardapio() e adicio
 Por fim, no arquivo app.py, você viu como usar esses novos métodos para adicionar uma bebida (bebida_suco) e um prato (prato_paozinho) ao restaurante_praca.
 
 O próximo passo será criar um método para listar esses itens do cardápio.
+
+Nesta aula, você aprendeu sobre a importância de refatorar o código para evitar repetições e torná-lo mais eficiente e fácil de gerenciar.
+
+Os instrutores mostraram como unificar os métodos de adicionar bebidas e pratos no cardápio em um único método chamado adicionar_no_cardapio(). Para isso, foi utilizada a função isinstance() para verificar se o item a ser adicionado é uma instância da classe ItemCardapio ou de uma de suas classes filhas.
+
+Essa abordagem permite adicionar qualquer tipo de item ao cardápio (bebidas, pratos, sobremesas, etc.) sem a necessidade de criar um método específico para cada um, o que simplifica bastante o código e facilita a manutenção.
+
+O próximo passo será exibir o cardápio de forma organizada.
+
+aprendemos a criar um método para exibir o cardápio de um restaurante. Começamos definindo o método exibir_cardapio() dentro da classe Restaurante e o marcamos com @property para que ele seja uma propriedade de leitura.
+
+Para organizar a exibição, incluímos o nome do restaurante e usamos um for loop com enumerate() para listar os itens do cardápio, começando a contagem do 1. Inicialmente, exibimos apenas o nome e o preço dos itens.
+
+Em seguida, para lidar com as diferenças entre pratos (que têm descrição) e bebidas (que têm tamanho), utilizamos a função hasattr() para verificar a existência desses atributos em cada item. Assim, conseguimos exibir a descrição para pratos e o tamanho para bebidas, tornando a apresentação do cardápio mais completa e organizada.
+
+Por fim, testamos a funcionalidade no app.py para garantir que o cardápio estava sendo exibido corretamente, com todos os detalhes específicos de cada tipo de item.

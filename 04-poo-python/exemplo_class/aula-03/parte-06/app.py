@@ -8,9 +8,10 @@ pastel_flango = Prato("Pastel de flango", 18.99, "Pastel de carne de flango da s
 japa_food.adicionar_no_cardapio(pastel_flango)
 japa_food.adicionar_no_cardapio(saque_japa)
 
+
+
 def main():
-    print(saque_japa)
-    print(pastel_flango)
+    japa_food.exibir_cardapio
 
 if __name__ == '__main__':
     main()
