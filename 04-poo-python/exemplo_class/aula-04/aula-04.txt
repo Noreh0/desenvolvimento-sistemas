@@ -1,0 +1,16 @@
+Nesta aula, os instrutores apresentaram um novo desafio: como aplicar descontos a diferentes itens do cardápio, já que cada item pode ter um desconto distinto. A solução para isso foi introduzir o conceito de classe abstrata e método abstrato.
+
+Eles mostraram como modificar a classe ItemCardapio para que ela se torne uma classe abstrata, importando ABC e abstractmethod do módulo abc e fazendo ItemCardapio herdar de ABC.
+
+O método aplicar_desconto foi definido como um @abstractmethod dentro de ItemCardapio. Isso significa que ItemCardapio não implementa o desconto em si (usando pass), mas obriga todas as classes que herdam dela (como Bebida e Prato) a implementar sua própria versão desse método.
+
+Ao final da aula, foi demonstrado que, sem a implementação do aplicar_desconto nas classes derivadas, o código gera um TypeError, pois não é possível instanciar uma classe abstrata sem que seus métodos abstratos sejam implementados. Isso reforça a obrigatoriedade imposta pelo método abstrato.
+
+Primeiro, foi criado o método aplicar_desconto() na classe Bebida, aplicando um desconto de 8% ao preço. Em seguida, o mesmo método foi implementado na classe Prato, mas com um desconto de 5%.
+
+Os instrutores explicaram que o Python permite ter o mesmo método com diferentes implementações em classes distintas, um conceito conhecido como polimorfismo. Isso significa que a classe principal (mãe ou pai) define que o método aplicar_desconto() deve existir, mas cada classe derivada (Bebida e Prato) decide como implementá-lo.
+
+Para verificar a aplicação dos descontos, você executou o programa app.py, chamando o método aplicar_desconto() para os objetos de bebida e prato criados. Foi demonstrado que os valores dos itens foram atualizados com os descontos aplicados.
+
+Por fim, foi reforçado que o polimorfismo permite que um mesmo método se adapte e tenha comportamentos diferentes em classes distintas, utilizando o método abstrato criado na classe principal como base.
+

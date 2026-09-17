@@ -1,0 +1,35 @@
+Esta aula tem que ser introdutória a Django com python, trazendo os principais aspectos e como vamos usar, ela deverá ter uma duração de 4 horas com conteúdo prático e atividades usando de exemplo esse conceito:
+Slide:
+    Apresentação da Aula
+    Objetivo da Aula(Explicando o que vamos ver)
+    Trazendo um slide com questionamento para provocar o intuito do porque usar aquilo que será apresentado em aula
+    Problema do mundo real que o conteúdo da Aula vai resolver
+    Apresentar o conteúdo técnico(exemplo: como criar uma arquitetura simples em django, inicializando, quais comandos usar)
+    Exemplo da arquitetura ou código
+    2 ou 3 - Exemplo prático para começarmos a mexermos com a estrutura que eu possa mistar com conceitos ténicos
+    Mostrar a importancia ou diferença dele para outros modelos no conceito
+    Mostrar a importancia ou diferença dele para outros modelos na prática digital
+    Estrutura profissional - como separar as pastas e o que cada uma deve ter
+    Atividades:
+    1 a 6 atividades para finalizar (pode induzir a enteragirem entre elas)
+Nesta aula, o instrutor Guilherme abordou a importância de compartilhar informações no desenvolvimento back-end, especialmente para equipes de front-end e mobile. Ele explicou que o protocolo HTTP é usado para compartilhar recursos e que a API (Interface de Programação de Aplicações) é uma forma comum de fazer essa comunicação.
+
+Foi apresentado um diagrama de comunicação entre cliente e servidor, onde o cliente envia uma requisição (request) e o servidor retorna uma resposta (response). O foco é que o servidor devolva as informações e dados que foram desenvolvidos na aplicação, e não a construção visual da página.
+
+Para isso, será necessário uma solução em Python que crie um servidor capaz de ouvir as requisições e devolver as informações corretas. O instrutor mencionou que a próxima aula abordará a ferramenta em Python para criar esse servidor.
+
+Nesta aula, você aprendeu a importância de obter dados de fontes externas, como bancos de dados ou da internet, em vez de criar informações fictícias. Foi apresentado o formato de arquivo JSON, que é muito comum na programação para estruturar dados. Você viu um exemplo de arquivo JSON com dados de restaurantes, que contém informações como nome da empresa, item, preço e descrição.
+
+Para trabalhar com esses dados em Python, você utilizou a biblioteca requests, que simplifica a realização de requisições HTTP. Os passos principais foram:
+
+    Ativar o ambiente virtual (venv) para garantir que as bibliotecas instaladas sejam usadas.
+    Criar um arquivo app.py e importar a biblioteca requests.
+    Salvar a URL do arquivo JSON em uma variável.
+    Fazer uma requisição GET para a URL usando requests.get(), que serve para solicitar recursos.
+    Verificar o status_code da resposta:
+        Um status_code 200 indica que a requisição foi bem-sucedida.
+        Um status_code 404, por exemplo, indica que o recurso não foi encontrado.
+    Se a requisição for bem-sucedida (status 200), você aprendeu a extrair os dados em formato JSON usando response.json() e imprimi-los. Caso contrário, é exibida uma mensagem de erro com o status_code correspondente.
+
+Em resumo, a aula te mostrou como simular a obtenção de dados de uma API externa usando o formato JSON e a biblioteca requests em Python, verificando o sucesso da requisição através dos códigos de status HTTP.
+
