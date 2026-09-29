@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Avaliações de {{ restaurante.nome }} - Sabor Express{% endblock %}
+
+{% block conteudo %}
+    <h2>Avaliações de {{ restaurante.nome }}</h2>
+    <p>Média geral: <strong>{{ restaurante.media_avaliacoes }}</strong></p>
+
+    {% if restaurante._avaliacao %}
+        <ul>
+            {% for avaliacao in restaurante._avaliacao %}
+                <li>{{ avaliacao._cliente }} — <strong>  {{ avaliacao._nota }}</strong></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Este restaurante ainda não tem avaliações.</p>
+    {% endif %}
+
+    <p><a href="{{ url_for('avaliar_restaurante', id_restaurante=restaurante.id) }}">Deixar uma avaliação</a></p>
+    <p><a href="{{ url_for('listar_cardapio', id_restaurante=restaurante.id) }}">Ver cardápio</a></p>
+{% endblock %}

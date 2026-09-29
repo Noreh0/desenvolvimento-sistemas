@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Cardápio de {{ restaurante.nome }} - Sabor Express{% endblock %}
+
+{% block conteudo %}
+    <h2>Cardápio de {{ restaurante.nome }}</h2>
+
+    <div class="cardapio-grid">
+        <section class="card">
+            <h3>Pratos</h3>
+            {% if pratos %}
+                <ul>
+                    {% for prato in pratos %}
+                        <li>
+                            <strong>{{ prato._nome }}</strong> — R$ {{ '%.2f' | format(prato._preco) }}
+                            <br>
+                            <small>{{ prato.descricao }}</small>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Nenhum prato cadastrado ainda.</p>
+            {% endif %}
+        </section>
+
+        <section class="card">
+            <h3>Bebidas</h3>
+            {% if bebidas %}
+                <ul>
+                    {% for bebida in bebidas %}
+                        <li>
+                            <strong>{{ bebida._nome }}</strong> — R$ {{ '%.2f' | format(bebida._preco) }}
+                            <br>
+                            <small>Tamanho: {{ bebida.tamanho }}</small>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Nenhuma bebida cadastrada ainda.</p>
+            {% endif %}
+        </section>
+    </div>
+
+    <p><a href="{{ url_for('listar_avaliacoes', id_restaurante=restaurante.id) }}">Ver avaliações</a></p>
+{% endblock %}

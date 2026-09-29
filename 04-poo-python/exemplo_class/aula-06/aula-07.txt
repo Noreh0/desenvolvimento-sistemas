@@ -1,0 +1,44 @@
+Aprendemos que o teste de software é um processo essencial para analisar e validar se uma aplicação ou sistema funciona conforme o esperado, além de identificar bugs e comportamentos inadequados. O principal objetivo é detectar erros durante o desenvolvimento para evitar que ocorram em produção, garantindo confiabilidade e qualidade.
+
+Discutimos também a importância dos testes para a experiência do usuário, assegurando uma boa interação com a interface, e para a redução de custos e riscos, evitando atrasos e despesas adicionais.
+
+A aula detalhou diferentes tipos de testes, explicando quando cada um é mais adequado:
+
+    Teste Unitário: Verifica uma única unidade ou funcionalidade da aplicação, como uma operação de soma.
+    Teste de Integração: Garante que dois ou mais módulos funcionam bem juntos, especialmente quando há dependência entre eles.
+    Teste de Regressão: Assegura que novas implementações ou correções não alterem o comportamento existente da aplicação de forma indesejada.
+    Teste de Sistema: Avalia a aplicação de ponta a ponta para verificar se ela cumpre seus objetivos.
+    Teste de Aceitação: Realizado pelo usuário para confirmar se a aplicação atende às suas expectativas.
+
+Além desses, foram apresentados outros tipos de testes específicos:
+
+    Teste Funcional: Valida se todas as funcionalidades e regras de negócio operam como esperado.
+    Teste de Usabilidade: Garante a acessibilidade e uma boa experiência para todos os usuários.
+    Teste de Segurança: Protege a aplicação contra ameaças.
+    Teste de Carga: Verifica o comportamento da aplicação sob um alto volume de acessos simultâneos.
+    Teste de Estresse: Submete a aplicação a condições extremas para avaliar sua reação a falhas controladas.
+    Teste de Aceitação Operacional: Garante a conformidade com requisitos legais e contratuais.
+
+A estrutura da aplicação é organizada em pastas para cada microserviço, seguindo um padrão de design adaptado do MVC (Model-View-Controller), onde há separação entre modelos de dados, interfaces de usuário (views) e a gerência de rotas (controllers).
+
+introdução aos testes unitários utilizando o framework PyTest.
+
+Começamos entendendo que o PyTest é uma ferramenta flexível para testes automatizados em Python, permitindo criar testes unitários, de integração e parametrizados. Ele suporta metodologias como TDD (Test-Driven Development) e automação da regressão.
+
+Para estruturar o ambiente de testes, você viu que é necessário criar uma pasta chamada "test" e, dentro dela, os arquivos de teste, que devem seguir o padrão "test" no nome (por exemplo, test__user__model.py).
+
+A aula também abordou a configuração do ambiente, incluindo a instalação do PyTest via pip install pytest e a importação de módulos como os, sys e a função listar_restaurante,receber_avaliacao, adicionar_no_cardapio e exibir_cardapio do models.usuario.
+
+Por fim, você criou seu primeiro teste unitário para a função listar_restaurante,receber_avaliacao, adicionar_no_cardapio e exibir_cardapio, verificando se ela retorna um dicionário completo corretamente. O teste utilizou assert para validar se o resultado obtido é igual ao esperado. A execução do teste foi feita pelo comando pytest no terminal.
+
+criação de diferentes casos de teste utilizando o framework Pytest.
+
+Foram abordados os seguintes pontos:
+
+    Testes para campos não preenchidos: Como criar testes para cenários onde um ou mais campos de um usuário estão incompletos ou vazios.
+    Testes para entradas inesperadas: A importância de testar o comportamento da função quando entradas que não são esperadas, como um número inteiro ou uma string, são fornecidas, utilizando pytest.raises para verificar se o erro esperado ocorre.
+    Testes para valores incomuns no dicionário: Como lidar com a inserção de valores inesperados dentro de um dicionário, como no test_serialize_user_inesperado.
+    Variações de comando do Pytest: A utilização do argumento -v (verbose) para obter informações mais detalhadas sobre os testes executados, o que é útil para identificar qual função específica falhou em caso de erro.
+    Foco em testes unitários: A aula enfatizou que os exemplos apresentados são de testes unitários, focando em uma única unidade da aplicação, as funções do restaurante.
+
+A ideia principal foi mostrar a flexibilidade do Pytest e como ele pode ser usado para cobrir diversos cenários de teste, garantindo a qualidade do código.

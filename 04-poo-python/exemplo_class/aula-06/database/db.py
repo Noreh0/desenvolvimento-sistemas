@@ -14,24 +14,6 @@ def conectar():
         database = "ifood2"
     )
     return conexao
-
-def tabela_avaliacao():
-    conexao = conectar()
-    cursor = conexao.cursor()
-    tabela_avaliacoes = """
-    CREATE TABLE IF NOT EXISTS avaliacoes(
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        id_restaurante INT,
-        nome_usuario VARCHAR(100) NOT NULL,
-        nota_avaliacao DECIMAL(2,1),
-        FOREIGN KEY (id_restaurante) REFERENCES restaurantes(id)
-    )
-    """
-    cursor.execute(tabela_avaliacoes)
-    conexao.commit()
-    conexao.close()
-
-
 # inserir - parte 03 oficial
 
 
@@ -59,3 +41,4 @@ def listar_avaliacoes():
         print(avaliacao)
     conexao.commit()
     conexao.close()
+    
